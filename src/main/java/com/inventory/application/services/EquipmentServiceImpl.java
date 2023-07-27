@@ -41,7 +41,9 @@ public class EquipmentServiceImpl implements EquipmentService{
         existingEquipment.setName(equipmentRequest.getName());
         existingEquipment.setPurchaseDate(equipmentRequest.getPurchaseDate());
         existingEquipment.setPurchaseValue(equipmentRequest.getPurchaseValue());
-        return equipmentRepository.updateEquipment(existingEquipment, equipmentId);
+        Equipment equipment = equipmentRepository.updateEquipment(existingEquipment, equipmentId);
+        equipment.setAccumulatedDepreciation(calculateDepreciation(equipment));
+        return equipment;
     }
 
     @Override

@@ -32,3 +32,21 @@ Sistema para realizar el inventario y deprecación del valor de los activos de u
 6. Accede a la documentación de la aplicación localmente a través de la URL http://localhost:8000/docs/swagger-ui/index.html
    o simplemente prueba los servicios desde postman a con la URL http://localhost:8000/equipment y los diferentes verbos HTTP
    POST, GET, PUT o DELETE.
+
+## Instrucciones para desplegar el proyecto en Kubernetes usando Docker
+
+1. Asegúrate de tener Kubernetes instalado y configurado correctamente en tu entorno de desarrollo o servidor de despliegue.
+   Puede ser Minikube o Docker Desktop para configurar un clúster local para pruebas.
+2. Construye la imagen de Docker siguiendo el cuarto paso mencionado anteriormente.
+3. Aplica la configuración a Kubernetes:
+   ```bash
+   kubectl apply -f deployment.yaml
+   ```
+4. Verifica que los pods estén ejecutándose y obtén la dirección del servicio expuesto:
+   ```bash
+   kubectl get pods
+   kubectl get services
+   ```
+5. Accede a la documentación de la aplicación a través de la URL http://localhost:90/docs/swagger-ui/index.html
+   o simplemente prueba los servicios desde postman a con la URL http://localhost:90/equipment y los diferentes verbos HTTP
+   POST, GET, PUT o DELETE.
