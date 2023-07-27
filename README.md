@@ -50,3 +50,11 @@ Sistema para realizar el inventario y deprecación del valor de los activos de u
 5. Accede a la documentación de la aplicación a través de la URL http://localhost:90/docs/swagger-ui/index.html
    o simplemente prueba los servicios desde postman a con la URL http://localhost:90/equipment y los diferentes verbos HTTP
    POST, GET, PUT o DELETE.
+
+## Diagramas
+
+En esta sección, se encuentran los diagramas técnicos realizados para el proyecto:
+
+- [Diagrama de Clases](diagrams/diagrama-clases.pdf): Representa la estructura de clases utilizadas en el sistema.
+- [Diagrama de Componentes](diagrams/diagrama-componentes.pdf): Muestra la arquitectura de componentes.
+- [Diagrama de Secuencia](diagrams/diagrama-secuencia.pdf): Ilustra la secuencia del servicio REST.
