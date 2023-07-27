@@ -1,7 +1,6 @@
 package com.inventory.application.services;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inventory.domain.dtos.EquipmentRequest;
 import com.inventory.domain.models.Equipment;
 import com.inventory.domain.ports.EquipmentRepository;
@@ -12,7 +11,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -35,7 +33,7 @@ public class EquipmentServiceImpl implements EquipmentService{
     }
 
     @Override
-    public Equipment updateEquipment(EquipmentRequest equipmentRequest, Long equipmentId) throws JsonMappingException {
+    public Equipment updateEquipment(EquipmentRequest equipmentRequest, Long equipmentId) {
         Equipment existingEquipment = equipmentRepository.findEquipmentById(equipmentId);
         if (existingEquipment == null) return null;
         existingEquipment.setName(equipmentRequest.getName());
@@ -71,6 +69,7 @@ public class EquipmentServiceImpl implements EquipmentService{
 
     @Override
     public BigDecimal calculateDepreciation(Equipment equipment) {
+        if (equipment.getPurchaseDate() == null) return BigDecimal.ZERO;
         LocalDate currentDate = LocalDate.now();
         LocalDate purchaseDate = equipment.getPurchaseDate();
         long yearsSincePurchase = ChronoUnit.YEARS.between(purchaseDate, currentDate);
